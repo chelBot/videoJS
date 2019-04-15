@@ -31,10 +31,7 @@ $( document ).ready(function() {
     let reminder = function() {
         video.on("ended", function() {
 
-
-
         });
-
     }
     
     let closeDialog = function() {
@@ -68,9 +65,7 @@ $( document ).ready(function() {
             videoEnd();
           }
     }
-    
     customElements.define("time-stamp", TimeStamp, { extends: "video" });
-    
 });
 
 
