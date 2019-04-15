@@ -1,0 +1,17 @@
+@import url("video-skin.css");
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgb(176,30,90);
+    background: #EBE8DA;;
+}

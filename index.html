@@ -1,0 +1,240 @@
+<head>
+  <!-- <link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="style.css">
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+  <script
+    src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+    crossorigin="anonymous"></script>
+  <script asynch src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  <script asynch src='https://vjs.zencdn.net/7.4.1/video.js'></script>
+  <script defer src="main.js"></script>
+</head>
+<body>
+  <template id="menu-template">
+    <style>
+      @font-face {
+        font-family: "Proxima Nova";
+        src: url("Proxima/ProximaNova.otf") format("opentype");
+      }
+
+      #video-container {
+        position: relative;
+      }
+
+
+
+      .hamburger {
+        font-size: 10px;
+        color: #EBE8DA;
+        position: absolute;
+        right: 0px;
+        top: 10px;
+        z-index: 5;
+      }
+
+      nav {
+        background: #2C5472;
+        color: #EBE8DA;
+        display: inline-block;
+        text-align: left;
+        position: absolute;
+        
+        right: 0;
+        top: 0;
+        z-index: 1;
+        margin: 0;
+        font-family: "Proxima Nova";
+        opacity: 0;
+        transition: all 300ms;
+      }
+
+      .show-nav {
+        transition: all 300ms;
+        padding: 16px 30px;
+        opacity: 1;
+
+      }
+
+      .topic:first-of-type {
+        margin-top: 35px;
+      }
+
+      .topic {
+        margin: 15.4px;
+        transition: all 300ms ease-out;
+        color: #EBE8DA;
+      }
+      
+      .topic:hover {
+        cursor: pointer;
+        /* background: linear-gradient(90deg, rgba(176,30,90,1) 0%, #EBE8DA 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-box-decoration-break: clone; */
+        transform: scale(1.2);
+      }
+/*
+      .topic::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background: pink;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+    } 
+*/
+    .topic:hover::before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+
+      #nav-toggle {
+        cursor: pointer;
+        padding: 10px 45px 35px 35px;
+      }
+
+      #nav-toggle span,
+      #nav-toggle span:before,
+      #nav-toggle span:after {
+        cursor: pointer;
+        border-radius: 1px;
+        height: 5px;
+        width: 35px;
+        background: #EBE8DA;
+        position: absolute;
+        display: block;
+        content: "";
+        transition: 500ms ease all;
+      }
+
+      #nav-toggle span:before {
+        top: -10px;
+      }
+
+      #nav-toggle span:after {
+        bottom: -10px;
+      }
+
+      #nav-toggle span {
+        margin-left: 1.3rem;
+      }
+
+      #nav-toggle.active span {
+        background-color: transparent;
+        /* left: 1rem; */
+      }
+
+      #nav-toggle.active span:before,
+      #nav-toggle.active span:after {
+        background:#EBE8DA;
+        top: 0;
+      }
+
+      #nav-toggle.active span:before {
+        transform: rotate(45deg);
+      }
+
+      #nav-toggle.active span:after {
+        transform: rotate(-45deg);
+      }
+      
+      dialog {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        background: #2C5472;
+        color: #EBE8DA;
+        border: none;
+        font-family: "Proxima Nova";
+        font-size: 45px;
+        /* display: flex;
+        align-items: center;
+        justify-content: center; */
+      }
+
+      dialog h1 {
+        margin-bottom: 0;
+        margin-top: 50px;
+      }
+
+      dialog a {
+        color: #92bdde;
+        transition: all .2s ease-in-out; 
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      dialog a:hover {
+        transform: scale(1.1);
+        color: #EBE8DA;
+        text-decoration: underline;
+      }
+
+      .close {
+        text-align: right;
+        position: absolute;
+        top: 11px;
+        right: 21px;
+        font-weight: bold;
+      }
+
+      .close:hover {
+        cursor: pointer;
+      }
+
+
+    </style>
+    <div class="container">
+      <div class="hamburger">
+          <a id="nav-toggle" href="#"><span></span></a>
+      </div>
+      <nav>
+      <div class="index">
+        <p href="#" class="topic" data-timestamp="13">
+          Example: Expanding Steps
+        </p>
+        <p class="topic" data-timestamp="35">
+            Example: Changing Steps
+        </p>
+        <p class="topic" data-timestamp="71">
+            Authoring an Iteration
+        </p>
+        <p class="topic" data-timestamp="131">
+            Authoring Tips to Consider
+        </p>
+        <p class="topic" data-timestamp="169">
+          Authoring Walkthrough
+        </p>
+      </div>
+      </nav>
+      <dialog>
+        <div>
+          <div class="close">X</div>
+          <h1>Your Turn</h1>
+          <p>Build your own Step-By-Step widget in our <a href="#">Widget Playground</a>!</p>
+        </div>
+        </dialog>
+      </dialog>
+    </div>
+  </template>
+  <div id="video-container">
+    <video  is="time-stamp" id='my-video' class='video-js vjs-big-play-centered' controls preload='auto' width='800' 
+    data-setup='{}' controls>
+      <source src="step-by-step.mp4" type="video/mp4">
+      <p class="vjs-no-js">
+        To view this video, please enable JavaScript and consider upgrading to a web browser that supports HTML5 video.
+      </p>
+    </video>
+
+  </div>
+</body>
+    
