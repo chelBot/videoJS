@@ -1,5 +1,5 @@
 
-const video = videojs("my-video", {playbackRates : [0.5, 1, 1.5, 2]}, fluid: true);
+const video = videojs("my-video", {playbackRates : [0.5, 1, 1.5, 2], fluid: true});
 $( document ).ready(function() {
     const video = videojs("my-video");
     let timestamp1 = function() {        
